@@ -4,8 +4,13 @@ import {connect} from 'react-redux';
 import {Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 import { BsStarFill } from 'react-icons/bs'
 import { Image } from 'react-bootstrap';
+import ReviewForm from './reviewForm';
 
 class MovieDetail extends Component {
+
+    submitReview = (details) => {
+    }
+
 
     componentDidMount() {
         const {dispatch} = this.props;
@@ -27,6 +32,7 @@ class MovieDetail extends Component {
                     <Card.Body>
                         <Image className="image" src={this.props.selectedMovie.imageUrl} thumbnail />
                     </Card.Body>
+               
                     <ListGroup>
                         <ListGroupItem>{this.props.selectedMovie.title}</ListGroupItem>
                         <ListGroupItem>
@@ -46,6 +52,7 @@ class MovieDetail extends Component {
                             </p>
                         ) : null}
                     </Card.Body>
+                    <ReviewForm movieId={this.props.selectedMovie._id} submitReview={this.submitReview}/>
                 </Card>
             )
         }
