@@ -30,13 +30,17 @@ class MovieList extends Component {
 
     render() {
         const MovieListCarousel = ({movieList}) => {
-            if (!movieList) {
+
+            if (!movieList || movieList.length === 0) {
                 return <div>Loading....</div>
             }
 
+            movieList = movieList.movies
+
+
             return (
                 <Carousel onSelect={this.handleSelect}>
-                    {movieList.map((movie) =>
+                    {movieList ? movieList.map((movie) =>
                         <Carousel.Item key={movie._id}>
                             <div>
                                 <LinkContainer to={'/movie/'+movie._id} onClick={()=>this.handleClick(movie)}>
@@ -48,7 +52,7 @@ class MovieList extends Component {
                                 <BsStarFill glyph={'star'} /> {movie.avgRating} &nbsp;&nbsp; {movie.releaseDate}
                             </Carousel.Caption>
                         </Carousel.Item>
-                    )}
+                    ) : null}
 
                 </Carousel>
             )

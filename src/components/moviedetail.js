@@ -20,6 +20,7 @@ class MovieDetail extends Component {
                 return <div>Loading....</div>
             }
 
+        
             return (
                 <Card>
                     <Card.Header>Movie Detail</Card.Header>
@@ -37,12 +38,13 @@ class MovieDetail extends Component {
                         <ListGroupItem><h4><BsStarFill/> {this.props.selectedMovie.avgRating}</h4></ListGroupItem>
                     </ListGroup>
                     <Card.Body>
-                        {this.props.selectedMovie.reviews.map((review, i) =>
+                        
+                        {this.props.selectedMovie.reviews ? this.props.selectedMovie.reviews.map((review, i) =>
                             <p key={i}>
                                 <b>{review.username}</b>&nbsp; {review.review}
                                 &nbsp;  <BsStarFill /> {review.rating}
                             </p>
-                        )}
+                        ) : null}
                     </Card.Body>
                 </Card>
             )
